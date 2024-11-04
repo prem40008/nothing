@@ -1,13 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Random Number Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Jura:wght@300..700&display=swap");
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f9fafb; /* Tailwind's gray-100 */
+        font-family: "Fredoka", "Jura", sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="text-center">
+      <h1 class="underline text-xl p-5 text- black">
+        Too Dangerous <span class="text-red-500">! </span>
+      </h1>
+      <button
+        id="randomButton"
+        class="bg-blue-500 text-white px-4 py-2 mt-15 rounded hover:bg-blue-700 transition duration-300">
+        Click Me
+      </button>
+      <p id="randomNumber" class="mt-4 text-2xl"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("randomButton")
+        .addEventListener("click", function () {
+          // Generate a random number between 0 and 99
+          let randomNum = Math.floor(Math.random() * 100);
+          // If the number is 100, display '00'
+          let displayNum =
+            randomNum === 100 ? "00" : randomNum.toString().padStart(2, "0");
+          // Display the number
+          document.getElementById("randomNumber").innerText = displayNum;
+        });
+    </script>
   </body>
 </html>
